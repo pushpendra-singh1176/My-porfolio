@@ -1,89 +1,212 @@
-<!-- ======================= index.html ======================= -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pushpendra | Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pushpendra Singh — DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-</head>
+  <meta name="description" content="Portfolio of Pushpendra Singh — DevOps, Cloud, Kubernetes.">
+  </head>
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <nav>
-      <h2>Pushpendra</h2>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Pushpendra<span class="accent">.</span></a>
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+        <a class="btn ghost" href="resume.pdf" download>Download Resume</a>
+      </div>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#technologies">Technologies</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Hi, I'm Pushpendra Singh</h1>
-    <p>DevOps | Cloud | Kubernetes Engineer</p>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>
-      I am a passionate DevOps Engineer with hands-on experience in Docker, Kubernetes,
-      AWS and CI/CD pipelines. I love automating infrastructure and deploying scalable
-      applications.
-    </p>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-list">
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">AWS</div>
-      <div class="skill">Docker</div>
-      <div class="skill">Python</div>
-      <div class="skill">Kubernetes</div>
-      <div class="skill">Jenkins</div>
-      <div class="skill">Git & GitHub</div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>Chat Application</h3>
-        <p>Containerized MERN chat app deployed on Kubernetes.</p>
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Hi, I'm <span class="name">Pushpendra Singh</span></h1>
+          <p class="lead"><span id="typed" aria-hidden="true"></span><span class="sr-only">DevOps &amp; Cloud Engineer — Kubernetes, CI/CD, Infrastructure Automation</span></p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="#projects">View Work</a>
+            <a class="btn ghost" href="#contact">Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="profile-card">
+            <img src="images/profile.svg" alt="Profile" class="profile-image">
+            <p class="profile-role">DevOps · Cloud · Kubernetes</p>
+          </div>
+        </div>
       </div>
-      <div class="project-card">
-        <h3>Monitoring Stack</h3>
-        <p>Prometheus & Grafana monitoring on Kubernetes cluster.</p>
+    </section>
+
+    <section id="about" class="about reveal">
+      <div class="container">
+        <h2>About Me</h2>
+        <p class="about-text">I design and operate reliable cloud infrastructure, automate delivery pipelines, and run production-grade Kubernetes clusters. I focus on observability, cost-efficiency and platform reliability.</p>
       </div>
+    </section>
+
+    <section id="projects" class="projects-section reveal">
+      <div class="container">
+        <h2>Selected Projects</h2>
+        <div class="projects-grid">
+          <article class="card project reveal">
+            <div class="card-head"><img class="card-icon" src="https://cdn.simpleicons.org/docker/06b6d4" alt="Docker logo"><h3>Containerized Chat Platform</h3></div>
+            <p>End-to-end containerized MERN app with CI/CD and Kubernetes deployment (Helm, ArgoCD).</p>
+            <a class="card-link" href="#">Details →</a>
+          </article>
+          <article class="card project reveal">
+            <div class="card-head"><img class="card-icon" src="https://cdn.simpleicons.org/grafana/e6522b" alt="Grafana logo"><h3>Monitoring & Observability</h3></div>
+            <p>Prometheus, Grafana and Loki stack with dashboards and alerting for cluster metrics.</p>
+            <a class="card-link" href="#">Details →</a>
+          </article>
+          <article class="card project reveal">
+            <div class="card-head"><img class="card-icon" src="https://cdn.simpleicons.org/terraform/6b7280" alt="Terraform logo"><h3>Infrastructure as Code</h3></div>
+            <p>Automated AWS infra using Terraform, modular modules and CI pipelines for safe deployments.</p>
+            <a class="card-link" href="#">Details →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="technologies" class="technologies reveal">
+      <div class="container">
+        <h2>Technologies</h2>
+        <div class="tech-grid">
+          <div class="tech-card"><img src="images/icon-docker.svg" alt="Docker"><span>Docker</span></div>
+          <div class="tech-card"><img src="images/icon-k8s.svg" alt="Kubernetes"><span>Kubernetes</span></div>
+          <div class="tech-card"><img src="images/icon-git.svg" alt="Git"><span>Git & GitHub</span></div>
+          <div class="tech-card"><img src="images/icon-ci.svg" alt="CI/CD"><span>CI / CD</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="skills reveal">
+      <div class="container">
+        <h2>Skills</h2>
+        <p class="about-text" style="margin-bottom:12px">Key technologies and tools I use daily. Percentages reflect practical proficiency and production experience.</p>
+        <div class="skills-grid">
+          <div class="skill-card" data-name="Docker" data-percent="92">
+            <img src="https://cdn.simpleicons.org/docker/06b6d4" alt="Docker">
+            <div class="skill-name">Docker</div>
+            <div class="skill-progress" aria-hidden="true">
+              <div class="circle"><span class="pct">0%</span></div>
+            </div>
+          </div>
+          <div class="skill-card" data-name="Kubernetes" data-percent="88">
+            <img src="https://cdn.simpleicons.org/kubernetes/326ce5" alt="Kubernetes">
+            <div class="skill-name">Kubernetes</div>
+            <div class="skill-progress" aria-hidden="true"><div class="circle"><span class="pct">0%</span></div></div>
+          </div>
+          <div class="skill-card" data-name="AWS" data-percent="86">
+            <img src="images/aws.svg" alt="AWS">
+            <div class="skill-name">AWS</div>
+            <div class="skill-progress" aria-hidden="true"><div class="circle"><span class="pct">0%</span></div></div>
+          </div>
+          <div class="skill-card" data-name="Terraform" data-percent="82">
+            <img src="https://cdn.simpleicons.org/terraform/6b7280" alt="Terraform">
+            <div class="skill-name">Terraform</div>
+            <div class="skill-progress" aria-hidden="true"><div class="circle"><span class="pct">0%</span></div></div>
+          </div>
+          <div class="skill-card" data-name="CI/CD" data-percent="90">
+            <img src="https://cdn.simpleicons.org/gitlab/ee5c2b" alt="CI/CD">
+            <div class="skill-name">CI / CD</div>
+            <div class="skill-progress" aria-hidden="true"><div class="circle"><span class="pct">0%</span></div></div>
+          </div>
+          <div class="skill-card" data-name="Prometheus" data-percent="74">
+            <img src="https://cdn.simpleicons.org/prometheus/f6c85f" alt="Prometheus">
+            <div class="skill-name">Prometheus</div>
+            <div class="skill-progress" aria-hidden="true"><div class="circle"><span class="pct">0%</span></div></div>
+          </div>
+          <div class="skill-card" data-name="Linux" data-percent="92">
+            <img src="https://cdn.simpleicons.org/linux/fcc624" alt="Linux">
+            <div class="skill-name">Linux</div>
+            <div class="skill-progress" aria-hidden="true"><div class="circle"><span class="pct">0%</span></div></div>
+          </div>
+          <div class="skill-card" data-name="Python" data-percent="76">
+            <img src="https://cdn.simpleicons.org/python/306998" alt="Python">
+            <div class="skill-name">Python</div>
+            <div class="skill-progress" aria-hidden="true"><div class="circle"><span class="pct">0%</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact reveal">
+      <div class="container contact-inner">
+        <h2>Contact</h2>
+        <p class="contact-lead">Interested in collaborating or reviewing my work? Send a message and I will respond within 48 hours.</p>
+
+        <div class="contact-grid">
+          <aside class="contact-info" aria-hidden="false">
+            <p class="info-lead">Prefer email or a quick call? Use the form, or copy my email below.</p>
+            <div class="contact-card">
+              <strong>Email</strong>
+              <div class="contact-row">
+                <button class="copy-email" data-email="pushpendra@example.com">pushpendrasingh9942@gmail.com</button>
+              </div>
+            </div>
+            <div class="contact-card">
+              <strong>Phone</strong>
+              <div class="contact-row">+91 6393780549 </div>
+            </div>
+            <div class="contact-card">
+              <strong>Follow</strong>
+              <div class="contact-row social-links">
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="GitHub">GitHub</a>
+              </div>
+            </div>
+          </aside>
+
+          <form id="contact-form" class="contact-form" action="#" method="post" aria-label="Contact form">
+            <div class="field">
+              <label for="contact-name">Your name</label>
+              <input id="contact-name" name="name" type="text" placeholder="" required>
+            </div>
+            <div class="field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" placeholder="" required>
+            </div>
+            <div class="field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" placeholder="" rows="6" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn primary send-btn" type="submit">
+                <span class="btn-text">Send Message</span>
+                <span class="spinner" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn ghost" id="clear-form">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Pushpendra Singh — Built with care.</p>
     </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Pushpendra Singh | All Rights Reserved</p>
   </footer>
 
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js" defer></script>
 </body>
 </html>
 
