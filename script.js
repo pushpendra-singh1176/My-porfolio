@@ -133,37 +133,82 @@
 
   function easeOutCubic(x){ return 1 - Math.pow(1 - x, 3); }
 
-  // Contact form handling — client-side UX: validation, send animation, reset
+  // Contact form handling with EmailJS integration
   const form = document.getElementById('contact-form');
   const sendBtn = document.querySelector('.send-btn');
+  
+  // Initialize EmailJS
+  emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+  
   if(form){
-    form.addEventListener('submit', (ev)=>{
+    form.addEventListener('submit', async (ev)=>{
       ev.preventDefault();
+      
       const name = document.getElementById('contact-name').value.trim();
       const email = document.getElementById('contact-email').value.trim();
+      const company = document.getElementById('contact-company').value.trim();
       const msg = document.getElementById('contact-message').value.trim();
-      if(!name||!email||!msg){ showToast('Please complete the form.'); return; }
-      // start sending state
+      
+      if(!name||!email||!msg){ 
+        showToast('Please fill in all required fields.', 3000); 
+        return; 
+      }
+      
+      // Start sending state
       sendBtn && sendBtn.classList.add('sending');
       sendBtn && (sendBtn.disabled = true);
-      // simulate network request
-      setTimeout(()=>{
+      
+      try {
+        // Send email using EmailJS
+        const templateParams = {
+          from_name: name,
+          from_email: email,
+          company: company || 'Not specified',
+          message: msg,
+          to_email: 'pushpendrasingh9942@gmail.com' // Your email
+        };
+        
+        const response = await emailjs.send(
+          'YOUR_SERVICE_ID',    // Replace with your EmailJS service ID
+          'YOUR_TEMPLATE_ID',   // Replace with your EmailJS template ID
+          templateParams
+        );
+        
+        if (response.status === 200) {
+          // Success state
+          sendBtn && sendBtn.classList.remove('sending');
+          sendBtn && sendBtn.classList.add('sent');
+          if(sendBtn) sendBtn.querySelector('.btn-text').textContent = 'Sent ✓';
+          
+          showToast('Message sent successfully! I\'ll get back to you soon.', 4000);
+          form.reset();
+          
+          // Reset button after delay
+          setTimeout(()=>{
+            if(sendBtn){
+              sendBtn.classList.remove('sent');
+              sendBtn.querySelector('.btn-text').textContent = 'Send Message';
+              sendBtn.disabled = false;
+            }
+          }, 3000);
+        }
+        
+      } catch (error) {
+        console.error('EmailJS Error:', error);
+        
+        // Error state
         sendBtn && sendBtn.classList.remove('sending');
-        sendBtn && sendBtn.classList.add('sent');
-        if(sendBtn) sendBtn.querySelector('.btn-text').textContent = 'Sent ✓';
-        showToast('Message sent — thanks!');
-        form.reset();
-        // reset styles on fields
-        document.querySelectorAll('.field').forEach(f=>f.classList.remove('filled'));
-        // after a delay, restore button
-        setTimeout(()=>{
-          if(sendBtn){
-            sendBtn.classList.remove('sent');
-            sendBtn.querySelector('.btn-text').textContent = 'Send Message';
-            sendBtn.disabled = false;
-          }
-        },2200);
-      },1300);
+        sendBtn && (sendBtn.disabled = false);
+        
+        let errorMessage = 'Failed to send message. Please try again.';
+        if (error.status === 400) {
+          errorMessage = 'Invalid email format. Please check your email address.';
+        } else if (error.status === 402) {
+          errorMessage = 'Service temporarily unavailable. Please try again later.';
+        }
+        
+        showToast(errorMessage, 4000);
+      }
     });
   }
 
