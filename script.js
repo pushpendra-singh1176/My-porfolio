@@ -188,8 +188,8 @@
   const form = document.getElementById('contact-form');
   const sendBtn = document.querySelector('.send-btn');
   
-  // Initialize EmailJS (Replace with your actual public key)
-  emailjs.init('YOUR_PUBLIC_KEY'); // Get this from EmailJS dashboard
+  // Initialize EmailJS with your public key
+  emailjs.init('WO5SiPzVGTE0z-r_F');
   
   if(form){
     form.addEventListener('submit', async (ev)=>{
@@ -221,8 +221,8 @@
         };
         
         const response = await emailjs.send(
-          'YOUR_SERVICE_ID',    // Replace with your EmailJS service ID
-          'YOUR_TEMPLATE_ID',   // Replace with your EmailJS template ID
+          'service_dudb0ik',    // Your EmailJS service ID
+          'template_gfp83v9',   // Your EmailJS template ID
           templateParams
         );
         
