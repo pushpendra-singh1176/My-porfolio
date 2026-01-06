@@ -7,10 +7,27 @@
 
   // Mobile nav toggle
   if(navToggle && mainNav){
-    navToggle.addEventListener('click', ()=>{
+    navToggle.addEventListener('click', (e)=>{
+      e.preventDefault();
       const isOpen = mainNav.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
+      
+      // Close nav when clicking outside
+      if(isOpen) {
+        document.addEventListener('click', closeNavOnClickOutside);
+      } else {
+        document.removeEventListener('click', closeNavOnClickOutside);
+      }
     });
+    
+    // Close nav when clicking outside
+    function closeNavOnClickOutside(e) {
+      if(!mainNav.contains(e.target) && !navToggle.contains(e.target)) {
+        mainNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', closeNavOnClickOutside);
+      }
+    }
   }
 
   // header shadow on scroll
