@@ -32,7 +32,8 @@
 
   .page {
     background: var(--bg);
-    width: 780px;
+    max-width: 780px;
+    width: 100%;
     padding: 48px 52px;
     box-shadow: 0 4px 40px rgba(0,0,0,0.10);
   }
@@ -45,6 +46,29 @@
     font-weight: 600;
     color: var(--ink);
     letter-spacing: -0.5px;
+  }
+
+  @media (max-width: 600px) {
+    .page {
+      padding: 16px 20px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+    }
+
+    .contacts {
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tags {
+      flex-wrap: wrap;
+    }
   }
   .header .role {
     font-size: 13px;
